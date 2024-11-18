@@ -20,6 +20,7 @@ Our Occupancy World Model can generate long-duration occupancy forecasts and can
 Our method consists of two components: <b>(a) Occ-VAE Pipeline</b> encodes occupancy frames into a continuous latent space, enabling efficient data compression. <b>(b)DOME Pipeline</b> learns to predict 4D occupancy based on historical occupancy observations.
 
 
+
 ## 🗓️ News
 
 [2024.11.18] Project page is online!
