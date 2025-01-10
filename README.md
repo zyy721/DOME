@@ -43,7 +43,7 @@ Our method consists of two components: <b>(a) Occ-VAE Pipeline</b> encodes occup
 ## 🚀 Setup
 ### clone the repo
 ```
-git clone https://github.com/gusongen/DOME-world-model.git
+git clone https://github.com/gusongen/DOME.git
 cd DOME
 ```
 
