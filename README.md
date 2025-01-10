@@ -7,9 +7,19 @@
 
 </div>
 
-![](https://gusongen.github.io/DOME/static/videos/cmp/6/output_video.gif)
-![](https://gusongen.github.io/DOME/static/videos/cmp/7/output_video.gif)
-![](https://gusongen.github.io/DOME/static/videos/cmp/31/output_video.gif)
+
+
+https://github.com/user-attachments/assets/7da724d5-acbc-40f7-b5f8-dac38cfbe24a
+
+
+https://github.com/user-attachments/assets/9ab4237c-67c0-4718-8576-32068a74bccf
+
+
+https://github.com/user-attachments/assets/f29149f3-a749-4c55-9777-3d05912bebe1
+
+
+
+
 
 <img src="static/images/teaser12.png" alt="teaser"/>
 Our Occupancy World Model can generate long-duration occupancy forecasts and can be effectively controlled by trajectory conditions.
