@@ -1,4 +1,4 @@
-<img src="static/images/favicon.ico" width="3%" align="left">
+<img src="static/images/favicon.ico" width="30px" align="left">
 
 # DOME: Taming Diffusion Model into High-Fidelity Controllable Occupancy World Model
 <div align="center">
