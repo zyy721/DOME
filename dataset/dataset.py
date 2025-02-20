@@ -8,7 +8,7 @@ except:
     OPENOCC_DATASET = Registry('openocc_dataset')
 import torch
 
-from mmdet3d.structures.bbox_3d import LiDARInstance3DBoxes, Box3DMode
+# from mmdet3d.structures.bbox_3d import LiDARInstance3DBoxes, Box3DMode
 from pathlib import Path
 from tqdm import tqdm
 # from concurrent.futures import ProcessPoolExecutor, as_completed
@@ -259,7 +259,7 @@ class nuScenesSceneDatasetLidarTraverse(nuScenesSceneDatasetLidar):
         ]
         self.with_velocity = True
         self.with_attr = True
-        self.box_mode_3d = Box3DMode.LIDAR
+        # self.box_mode_3d = Box3DMode.LIDAR
         
     def __len__(self):
         'Denotes the total number of samples'
@@ -368,18 +368,25 @@ class nuScenesSceneDatasetLidarTraverse(nuScenesSceneDatasetLidar):
         
         # the nuscenes box center is [0.5, 0.5, 0.5], we change it to be
         # the same as KITTI (0.5, 0.5, 0)
-        gt_bboxes_3d = LiDARInstance3DBoxes(
-            gt_bboxes_3d,
-            box_dim=gt_bboxes_3d.shape[-1],
-            origin=(0.5, 0.5, 0.5)).convert_to(self.box_mode_3d)
+        # gt_bboxes_3d = LiDARInstance3DBoxes(
+        #     gt_bboxes_3d,
+        #     box_dim=gt_bboxes_3d.shape[-1],
+        #     origin=(0.5, 0.5, 0.5)).convert_to(self.box_mode_3d)
+        
+        # anns_results = dict(
+        #     gt_bboxes_3d=gt_bboxes_3d,
+        #     #gt_labels_3d=gt_labels_3d,
+        #     gt_names=gt_names_3d,
+        #     attr_labels=attr_labels,
+        #     fut_valid_flag=fut_valid_flag,)
         
         anns_results = dict(
-            gt_bboxes_3d=gt_bboxes_3d,
-            #gt_labels_3d=gt_labels_3d,
+            # gt_bboxes_3d=gt_bboxes_3d,
+            # #gt_labels_3d=gt_labels_3d,
             gt_names=gt_names_3d,
             attr_labels=attr_labels,
             fut_valid_flag=fut_valid_flag,)
-        
+
         return anns_results
         
         
