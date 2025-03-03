@@ -6,7 +6,7 @@ import torch, numpy as np
 import torch.distributed as dist
 from copy import deepcopy
 
-import mmcv
+# import mmcv
 from mmengine import Config
 from mmengine.runner import set_random_seed
 from mmengine.optim import build_optim_wrapper
@@ -166,6 +166,7 @@ def main(local_rank, args):
             train_dataset_loader.sampler.set_last_iter(last_iter)
         print(f'successfully resumed from epoch {epoch}')
     print(vae.load_state_dict(torch.load(cfg.vae_resume_from)['state_dict']))
+    # print(vae.load_state_dict(torch.load(cfg.vae_resume_from)['state_dict'], strict=False))
     # training
     print_freq = cfg.print_freq
 
@@ -209,6 +210,10 @@ def main(local_rank, args):
         # if True:
             # if i_iter_val>50: #debug
             #     break
+
+            if i_iter_val > 0:
+                break
+
             input_occs = input_occs.cuda()
             target_occs = target_occs.cuda()
             assert (input_occs==target_occs).all()

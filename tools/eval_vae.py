@@ -3,7 +3,7 @@ import torch, numpy as np
 import torch.distributed as dist
 from copy import deepcopy
 
-import mmcv
+# import mmcv
 from mmengine import Config
 from mmengine.runner import set_random_seed
 from mmengine.optim import build_optim_wrapper
@@ -183,7 +183,7 @@ def main(local_rank, args):
                 print(raw_model.vae.load_state_dict(state_dict, strict=False))
         else:
             # print(raw_model.load_state_dict(state_dict, strict=False))
-            load_checkpoint(raw_model,state_dict, strict=False) #TODO may need to remove moudle.xxx
+            load_checkpoint(raw_model,state_dict) #TODO may need to remove moudle.xxx
         
     # training
     print_freq = cfg.print_freq
@@ -213,6 +213,9 @@ def main(local_rank, args):
             for i_iter_val, (input_occs, target_occs, metas) in enumerate(val_dataset_loader):
                 # input_occs=rearrange(input_occs,'b (f1 f) h w d-> (b f) (f1 1) h w d',f1=2)
                 # target_occs=rearrange(target_occs,'b f h w d-> (b f) 1 h w d')
+
+                if i_iter_val > 0:
+                    break
                 
                 input_occs = input_occs.cuda()
                 target_occs = target_occs.cuda()

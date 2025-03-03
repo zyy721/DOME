@@ -16,7 +16,7 @@
             // "module": "torch.distributed.run",
             "justMyCode": false,
             "env": {
-                "CUDA_VISIBLE_DEVICES": "0", // "0,1,2,3",
+                "CUDA_VISIBLE_DEVICES": "1", // "0,1,2,3",
                 "PYTHONPATH": "${workspaceFolder}:${env:PYTHONPATH}",
             },
 
@@ -26,25 +26,74 @@
             ]
         },
 
-        // {
-        //     "name": "dit_infer",
-        //     "type": "debugpy",
-        //     "request": "launch",
-        //     "program": "sample.py",
+        {
+            "name": "eval_diffusion",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "tools/eval_metric.py",
 
-        //     "python": "/home/yzhu/anaconda3/envs/dojo/bin/python",
-        //     "console": "integratedTerminal",
-        //     // "module": "torch.distributed.run",
-        //     "justMyCode": false,
-        //     "env": {
-        //         "CUDA_VISIBLE_DEVICES": "0", // "0,1,2,3",
-        //         "PYTHONPATH": "${workspaceFolder}:${env:PYTHONPATH}",
-        //     },
+            "python": "/home/yzhu/anaconda3/envs/dojo/bin/python",
+            "console": "integratedTerminal",
+            // "module": "torch.distributed.run",
+            "justMyCode": false,
+            "env": {
+                "CUDA_VISIBLE_DEVICES": "1", // "0,1,2,3",
+                "PYTHONPATH": "${workspaceFolder}:${env:PYTHONPATH}",
+            },
 
-        //     "args": [
-        //         "--image-size", "512", 
-        //         "--seed", "1",
-        //     ]
-        // },
+            "args": [
+                "--py-config", "./config/train_dome.py", 
+                "--work-dir", "./work_dir/dome",
+                "--resume-from", "ckpts/dome.pth",
+                "--vae-resume-from", "ckpts/occvae_latest.pth"
+            ]
+        },
+
+
+        {
+            "name": "train_vae",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "tools/train_vae.py",
+
+            "python": "/home/yzhu/anaconda3/envs/dojo/bin/python",
+            "console": "integratedTerminal",
+            // "module": "torch.distributed.run",
+            "justMyCode": false,
+            "env": {
+                "CUDA_VISIBLE_DEVICES": "1", // "0,1,2,3",
+                "PYTHONPATH": "${workspaceFolder}:${env:PYTHONPATH}",
+            },
+
+            "args": [
+                "--py-config", "./config/train_occvae.py", 
+                "--work-dir", "./work_dir/occ_vae",
+            ]
+        },
+
+
+        {
+            "name": "eval_vae",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "tools/eval_vae.py",
+
+            "python": "/home/yzhu/anaconda3/envs/dojo/bin/python",
+            "console": "integratedTerminal",
+            // "module": "torch.distributed.run",
+            "justMyCode": false,
+            "env": {
+                "CUDA_VISIBLE_DEVICES": "1", // "0,1,2,3",
+                "PYTHONPATH": "${workspaceFolder}:${env:PYTHONPATH}",
+            },
+
+            "args": [
+                "--py-config", "./config/train_occvae.py", 
+                "--work-dir", "./work_dir/occ_vae",
+                "--load_from", "ckpts/occvae_latest.pth"
+            ]
+        },
+
+
     ]
 }
